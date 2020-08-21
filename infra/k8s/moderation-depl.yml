@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: event-bus-depl
+  name: moderation-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: event-bus
+      app: moderation
   template:
     metadata:
       labels:
-        app: event-bus
+        app: moderation
     spec:
       containers:
-        - name: event-bus
-          image: manuhdez/event-bus
+        - name: moderation
+          image: manuhdez/moderation
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: event-bus-clusterip
+  name: moderation-clusterip
 spec:
   type: ClusterIP
   selector:
-    app: event-bus
+    app: moderation
   ports:
-    - port: 4000
-      targetPort: 4000
+    - port: 3004
+      targetPort: 3004

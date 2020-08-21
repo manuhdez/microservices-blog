@@ -15,15 +15,11 @@ spec:
       containers:
         - name: posts
           image: manuhdez/posts
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-clusterip-srv
+  name: posts-clusterip
 spec:
   type: ClusterIP
   selector:
@@ -38,7 +34,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-srv
+  name: posts-nodeport
 spec:
   type: NodePort
   selector:

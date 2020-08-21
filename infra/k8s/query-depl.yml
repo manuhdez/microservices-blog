@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: event-bus-depl
+  name: query-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: event-bus
+      app: query
   template:
     metadata:
       labels:
-        app: event-bus
+        app: query
     spec:
       containers:
-        - name: event-bus
-          image: manuhdez/event-bus
+        - name: query
+          image: manuhdez/query
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: event-bus-clusterip
+  name: query-clusterip
 spec:
   type: ClusterIP
   selector:
-    app: event-bus
+    app: query
   ports:
-    - port: 4000
-      targetPort: 4000
+    - port: 3003
+      targetPort: 3003
