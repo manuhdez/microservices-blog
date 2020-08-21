@@ -15,6 +15,15 @@ spec:
       containers:
         - name: event-bus
           image: manuhdez/event-bus
+          env:
+            - name: POSTS_SERVICE_URL
+              value: http://posts-clusterip:3001/events
+            - name: COMMENTS_SERVICE_URL
+              value: http://comments-clusterip:3002/events
+            - name: QUERY_SERVICE_URL
+              value: http://query-clusterip:3003/events
+            - name: MODERATION_SERVICE_URL
+              value: http://moderation-clusterip:3004/events
 ---
 apiVersion: v1
 kind: Service
