@@ -13,7 +13,7 @@ export interface PostEvent {
 
 export default class PostsList {
   private postsList: PostData[];
-  private eventBusUrl = 'http://localhost:4000/events';
+  private eventBusUrl = process.env.EVENT_BUS_URL as string;
 
   constructor(defaultData: PostData[] = []) {
     this.postsList = defaultData;
