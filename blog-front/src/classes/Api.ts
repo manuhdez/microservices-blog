@@ -16,7 +16,7 @@ export default class Api {
 
   public async createPost(title: string) {
     return await this.request<Post>({
-      url: '/posts',
+      url: '/posts/create',
       method: 'POST',
       body: { title },
     });

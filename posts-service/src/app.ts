@@ -22,7 +22,7 @@ app.get('/posts', (req: Request, res: Response<PostData[]>) => {
   res.status(200).json(posts.getPostsList());
 });
 
-app.post('/posts', (req: Request, res: Response<PostData>) => {
+app.post('/posts/create', (req: Request, res: Response<PostData>) => {
   const { title } = req.body;
 
   res.status(200).json(posts.createPost(title));
