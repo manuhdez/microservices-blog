@@ -25,9 +25,7 @@ export default class EventController {
       case EventTypes.commentCreated:
         return this.handleCommentCreated(payload as Comment, res);
       default:
-        return res
-          .status(400)
-          .json({ success: false, message: 'Event not registered' });
+        return res.status(200).json({});
     }
   }
 
