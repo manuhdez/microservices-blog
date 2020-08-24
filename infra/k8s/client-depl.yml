@@ -17,11 +17,11 @@ spec:
           image: manuhdez/blog-front
           env:
             - name: REACT_APP_POSTS_SERVICE_URL
-              value: posts.com
+              value: http://posts.com
             - name: REACT_APP_COMMENTS_SERVICE_URL
-              value: http://localhost:3002
+              value: http://posts.com
             - name: REACT_APP_QUERY_SERVICE_URL
-              value: http://localhost:3003
+              value: http://posts.com
 
 ---
 apiVersion: v1
