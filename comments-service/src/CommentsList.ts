@@ -20,7 +20,7 @@ export enum CommentStatus {
 
 export default class CommentsList {
   private commentsList: CommentData[];
-  private eventBusUrl = 'http://localhost:4000/events';
+  private eventBusUrl = process.env.EVENT_BUS_URL as string;
 
   constructor(defaultData: CommentData[] = []) {
     this.commentsList = defaultData;
