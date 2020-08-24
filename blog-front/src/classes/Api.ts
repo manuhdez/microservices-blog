@@ -48,7 +48,7 @@ export default class Api {
   private async request<T>(data: ApiRequestData) {
     const { url, method, body } = data;
 
-    const response = await fetch(`${this.baseUrl}${url}`, {
+    const response = await fetch(url, {
       method: method,
       headers: {
         'Content-Type': 'application/json',
