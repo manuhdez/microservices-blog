@@ -1,7 +1,11 @@
 import React, { useState, FormEvent } from 'react';
 import Api from '../../classes/Api';
 
-export default function PostCreate(): JSX.Element {
+interface PostCreateProps {
+  updatePostsList: () => void;
+}
+
+export default function PostCreate(props: PostCreateProps): JSX.Element {
   const [postTitle, setPostTitle] = useState<string>('');
 
   const handleCreatePost = async (event: FormEvent) => {
@@ -12,8 +16,14 @@ export default function PostCreate(): JSX.Element {
 
     const api = new Api(postsBaseUrl);
     await api.createPost(postTitle);
+    setPostTitle('');
+    handleUpdateList();
+  };
 
-    window.location.reload();
+  const handleUpdateList = () => {
+    setTimeout(() => {
+      props.updatePostsList();
+    }, 1000);
   };
 
   const handleTitleChange = (event: FormEvent<HTMLInputElement>) => {
