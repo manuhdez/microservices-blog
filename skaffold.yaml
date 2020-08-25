@@ -1,0 +1,60 @@
+apiVersion: skaffold/v2beta6
+kind: Config
+metadata:
+  name: blog-microservices
+build:
+  local:
+    push: false
+  artifacts:
+    - image: manuhdez/blog-front
+      context: blog-front
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.js"
+            dest: .
+    - image: manuhdez/comments
+      context: comments-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.js"
+            dest: .
+    - image: manuhdez/event-bus
+      context: event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.js"
+            dest: .
+    - image: manuhdez/moderation
+      context: moderation-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.js"
+            dest: .
+    - image: manuhdez/posts
+      context: posts-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.js"
+            dest: .
+    - image: manuhdez/query
+      context: query-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.js"
+            dest: .
+deploy:
+  kubectl:
+    manifests:
+      - infra/k8s/*
